@@ -1,0 +1,4360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#0a84ff">
+
+    <title>BizTrace IMS - Complete Business Management</title>
+
+    <link rel="icon" href="images/1.png" type="image/png">
+
+    <!-- Bootstrap 5.3.3 -->
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+    >
+
+    <!-- Bootstrap Icons -->
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
+        rel="stylesheet"
+    >
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <style>
+
+        /* =========================================================
+           ROOT VARIABLES
+        ========================================================= */
+
+        :root {
+            --primary: #0a84ff;
+            --primary-hover: #0066cc;
+            --primary-soft: rgba(10, 132, 255, 0.10);
+            --primary-glow: rgba(10, 132, 255, 0.25);
+
+            --success: #10b981;
+            --success-soft: rgba(16, 185, 129, 0.12);
+
+            --whatsapp: #25d366;
+            --whatsapp-dark: #1da851;
+
+            --page-bg: #f5f7fb;
+            --surface-bg: #ffffff;
+
+            --text-primary: #111827;
+            --text-secondary: #6b7280;
+
+            --border-color: rgba(0, 0, 0, 0.08);
+
+            --glass-bg: rgba(255, 255, 255, 0.85);
+            --glass-card: rgba(255, 255, 255, 0.92);
+            --glass-border: rgba(255, 255, 255, 0.7);
+
+            --shadow: 0 25px 70px rgba(15, 23, 42, 0.08);
+            --card-shadow: 0 16px 36px rgba(0, 0, 0, 0.04);
+
+            --transition: cubic-bezier(0.22, 1, 0.36, 1);
+
+            --nav-height: 76px;
+        }
+
+
+        /* =========================================================
+           SYSTEM DARK MODE
+        ========================================================= */
+
+        @media (prefers-color-scheme: dark) {
+
+            :root {
+                --primary: #0a84ff;
+                --primary-hover: #3399ff;
+
+                --primary-soft: rgba(10, 132, 255, 0.18);
+                --primary-glow: rgba(10, 132, 255, 0.35);
+
+                --success: #10b981;
+                --success-soft: rgba(16, 185, 129, 0.22);
+
+                --page-bg: #090d14;
+                --surface-bg: #111827;
+
+                --text-primary: #f8fafc;
+                --text-secondary: #94a3b8;
+
+                --border-color: rgba(255, 255, 255, 0.09);
+
+                --glass-bg: rgba(15, 23, 42, 0.85);
+                --glass-card: rgba(15, 23, 42, 0.92);
+                --glass-border: rgba(255, 255, 255, 0.08);
+
+                --shadow: 0 25px 80px rgba(0, 0, 0, 0.45);
+                --card-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            }
+        }
+
+
+        /* =========================================================
+           GLOBAL
+        ========================================================= */
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--page-bg);
+            color: var(--text-primary);
+            transition: background 0.35s ease, color 0.35s ease;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+            margin: 0;
+            padding: 0;
+        }
+
+        .text-primary {
+            color: var(--primary) !important;
+        }
+
+        .text-secondary {
+            color: var(--text-secondary) !important;
+        }
+
+
+        /* =========================================================
+           TOP NAVIGATION
+        ========================================================= */
+
+        .welcome-topbar {
+            position: sticky;
+            top: 0;
+            left: 0;
+            width: 100%;
+            min-height: var(--nav-height);
+
+            padding: 0 clamp(16px, 4vw, 60px);
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            z-index: 1000;
+
+            background: var(--glass-bg);
+
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .brand {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+
+            text-decoration: none;
+
+            color: var(--text-primary);
+
+            font-size: 1.15rem;
+            font-weight: 800;
+
+            letter-spacing: -0.02em;
+        }
+
+        .brand:hover {
+            color: var(--text-primary);
+        }
+
+        .brand-icon {
+            width: 40px;
+            height: 40px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 12px;
+
+            background: var(--primary);
+            color: white;
+
+            box-shadow: 0 8px 22px var(--primary-glow);
+        }
+
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+
+            list-style: none;
+
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-link-custom {
+            color: var(--text-secondary);
+
+            text-decoration: none;
+
+            font-weight: 600;
+            font-size: 0.92rem;
+
+            transition: color 0.2s ease;
+        }
+
+        .nav-link-custom:hover {
+            color: var(--primary);
+        }
+
+        .nav-support {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .support-nav-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: var(--success);
+            box-shadow: 0 0 0 4px var(--success-soft);
+        }
+
+
+        /* =========================================================
+           HERO
+        ========================================================= */
+
+        .welcome-hero {
+            position: relative;
+
+            width: 100%;
+
+            min-height: calc(100vh - var(--nav-height));
+            min-height: calc(100dvh - var(--nav-height));
+
+            overflow: hidden;
+
+            isolation: isolate;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+
+            background:
+                radial-gradient(
+                    circle at 15% 20%,
+                    rgba(10, 132, 255, 0.12),
+                    transparent 32%
+                ),
+                radial-gradient(
+                    circle at 85% 80%,
+                    rgba(10, 132, 255, 0.09),
+                    transparent 35%
+                ),
+                var(--page-bg);
+        }
+
+        .background-orb {
+            position: absolute;
+
+            border-radius: 50%;
+
+            pointer-events: none;
+
+            filter: blur(50px);
+
+            z-index: -1;
+
+            opacity: 0.7;
+        }
+
+        .background-orb-one {
+            width: 450px;
+            height: 450px;
+
+            top: -150px;
+            right: -100px;
+
+            background: rgba(10, 132, 255, 0.16);
+        }
+
+        .background-orb-two {
+            width: 380px;
+            height: 380px;
+
+            bottom: -100px;
+            left: -100px;
+
+            background: rgba(10, 132, 255, 0.12);
+        }
+
+
+        /* =========================================================
+           SLIDER
+        ========================================================= */
+
+        .slider {
+            width: 100%;
+
+            flex: 1;
+
+            position: relative;
+
+            touch-action: pan-y;
+
+            cursor: grab;
+
+            display: flex;
+            align-items: center;
+        }
+
+        .slides {
+            display: flex;
+
+            width: 100%;
+            height: 100%;
+
+            transform: translate3d(0, 0, 0);
+
+            transition:
+                transform 0.75s var(--transition);
+
+            will-change: transform;
+        }
+
+        .slide {
+            min-width: 100%;
+            height: 100%;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            padding: 32px clamp(16px, 5vw, 80px) 40px;
+
+            user-select: none;
+
+            box-sizing: border-box;
+        }
+
+        .slide-inner {
+            width: min(1200px, 100%);
+
+            display: grid;
+
+            grid-template-columns:
+                minmax(0, 1.1fr)
+                minmax(320px, 0.9fr);
+
+            align-items: center;
+
+            gap: clamp(24px, 4vw, 60px);
+        }
+
+        .slide-content {
+            max-width: 580px;
+        }
+
+        .slide-number {
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 8px;
+
+            padding: 6px 14px;
+
+            border-radius: 999px;
+
+            background: var(--primary-soft);
+
+            color: var(--primary);
+
+            font-size: 0.78rem;
+
+            font-weight: 700;
+
+            letter-spacing: 0.04em;
+
+            margin-bottom: 16px;
+
+            text-transform: uppercase;
+        }
+
+        .slide-title {
+            margin: 0;
+
+            font-size: clamp(2.1rem, 4vw, 4.2rem);
+
+            line-height: 1.08;
+
+            letter-spacing: -0.04em;
+
+            font-weight: 800;
+
+            color: var(--text-primary);
+        }
+
+        .slide-title .accent {
+            color: var(--primary);
+
+            background:
+                linear-gradient(
+                    135deg,
+                    var(--primary),
+                    #38ef7d
+                );
+
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .slide-description {
+            margin: 16px 0 0;
+
+            max-width: 500px;
+
+            color: var(--text-secondary);
+
+            font-size: clamp(0.92rem, 1.1vw, 1.08rem);
+
+            line-height: 1.6;
+        }
+
+
+        /* =========================================================
+           DOWNLOAD BUTTONS
+        ========================================================= */
+
+        .download-group {
+            display: flex;
+
+            flex-wrap: wrap;
+
+            gap: 12px;
+
+            margin-top: 28px;
+
+            align-items: center;
+        }
+
+        .btn-download {
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 12px;
+
+            padding: 10px 18px;
+
+            border-radius: 14px;
+
+            text-decoration: none;
+
+            transition: all 0.25s var(--transition);
+
+            border: 1px solid var(--border-color);
+
+            background: var(--glass-card);
+
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+
+            color: var(--text-primary);
+
+            box-shadow:
+                0 8px 20px rgba(0, 0, 0, 0.04);
+        }
+
+        .btn-download:hover {
+            transform: translateY(-3px);
+
+            border-color: var(--primary);
+
+            color: var(--text-primary);
+
+            box-shadow:
+                0 12px 28px var(--primary-glow);
+        }
+
+        .btn-download.btn-primary-app {
+            background: var(--primary);
+
+            color: white;
+
+            border-color: var(--primary);
+
+            box-shadow:
+                0 10px 25px var(--primary-glow);
+        }
+
+        .btn-download.btn-primary-app:hover {
+            background: var(--primary-hover);
+
+            color: white;
+
+            box-shadow:
+                0 14px 32px var(--primary-glow);
+        }
+
+        .btn-download i {
+            font-size: 1.4rem;
+
+            line-height: 1;
+        }
+
+        .download-text {
+            display: flex;
+
+            flex-direction: column;
+
+            text-align: left;
+
+            line-height: 1.15;
+        }
+
+        .download-text small {
+            font-size: 0.65rem;
+
+            opacity: 0.85;
+
+            font-weight: 500;
+
+            text-transform: uppercase;
+
+            letter-spacing: 0.03em;
+        }
+
+        .download-text strong {
+            font-size: 0.88rem;
+
+            font-weight: 700;
+        }
+
+
+        /* =========================================================
+           VISUAL CARDS
+        ========================================================= */
+
+        .slide-visual {
+            position: relative;
+
+            min-height: 340px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+        }
+
+        .visual-glow {
+            position: absolute;
+
+            width: 320px;
+            height: 320px;
+
+            border-radius: 50%;
+
+            background:
+                radial-gradient(
+                    circle,
+                    var(--primary-glow),
+                    transparent 70%
+                );
+
+            filter: blur(20px);
+
+            z-index: 0;
+        }
+
+        .visual-card {
+            position: relative;
+
+            z-index: 2;
+
+            width: min(480px, 100%);
+
+            padding: 24px;
+
+            border: 1px solid var(--glass-border);
+
+            border-radius: 28px;
+
+            background: var(--glass-bg);
+
+            backdrop-filter: blur(20px);
+
+            -webkit-backdrop-filter: blur(20px);
+
+            box-shadow: var(--shadow);
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 16px;
+        }
+
+        .feature-icon-badge {
+            position: absolute;
+
+            top: 20px;
+            right: 20px;
+
+            width: 46px;
+            height: 46px;
+
+            border-radius: 14px;
+
+            background: var(--primary-soft);
+
+            color: var(--primary);
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            font-size: 1.35rem;
+        }
+
+        .mockup-header {
+            display: flex;
+
+            align-items: center;
+
+            gap: 8px;
+
+            margin-bottom: 6px;
+        }
+
+        .mockup-dot {
+            width: 10px;
+            height: 10px;
+
+            border-radius: 50%;
+        }
+
+        .mockup-stats-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap: 12px;
+        }
+
+        .stat-box {
+            padding: 14px;
+
+            border-radius: 14px;
+
+            background:
+                rgba(128, 128, 128, 0.05);
+
+            border: 1px solid var(--border-color);
+        }
+
+        .stat-box .title {
+            font-size: 0.72rem;
+
+            color: var(--text-secondary);
+
+            margin-bottom: 4px;
+        }
+
+        .stat-box .value {
+            font-size: 1.18rem;
+
+            font-weight: 700;
+
+            color: var(--text-primary);
+        }
+
+
+        /* =========================================================
+           FLOATING BADGES
+        ========================================================= */
+
+        .floating-badge {
+            position: absolute;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 8px;
+
+            padding: 10px 16px;
+
+            border-radius: 14px;
+
+            background: var(--glass-card);
+
+            border: 1px solid var(--glass-border);
+
+            backdrop-filter: blur(16px);
+
+            -webkit-backdrop-filter: blur(16px);
+
+            box-shadow:
+                0 12px 30px rgba(0, 0, 0, 0.12);
+
+            color: var(--text-primary);
+
+            font-size: 0.8rem;
+
+            font-weight: 700;
+
+            z-index: 4;
+        }
+
+        .floating-badge i {
+            color: var(--primary);
+
+            font-size: 1rem;
+        }
+
+        .badge-one {
+            top: 10px;
+
+            right: -15px;
+
+            animation:
+                badgeFloat 4s ease-in-out infinite;
+        }
+
+        .badge-two {
+            bottom: 10px;
+
+            left: -15px;
+
+            animation:
+                badgeFloat 4s ease-in-out 2s infinite;
+        }
+
+
+        /* =========================================================
+           SLIDE 4 - REAL APP SCREENSHOT
+        ========================================================= */
+
+        .app-preview-visual {
+            position: relative;
+
+            min-height: 420px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+        }
+
+        .app-preview-glow {
+            position: absolute;
+
+            width: 430px;
+            height: 430px;
+
+            border-radius: 50%;
+
+            background:
+                radial-gradient(
+                    circle,
+                    rgba(10, 132, 255, 0.28),
+                    transparent 68%
+                );
+
+            filter: blur(35px);
+
+            z-index: 0;
+        }
+
+        .app-screenshot-wrapper {
+            position: relative;
+
+            z-index: 2;
+
+            width: min(650px, 100%);
+
+            padding: 10px;
+
+            border-radius: 22px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(255,255,255,0.75),
+                    rgba(10,132,255,0.18)
+                );
+
+            border: 1px solid var(--glass-border);
+
+            box-shadow:
+                0 30px 80px rgba(0,0,0,0.20);
+
+            transform:
+                perspective(1200px)
+                rotateY(-3deg)
+                rotateX(2deg);
+
+            transition:
+                transform 0.4s ease;
+        }
+
+        .app-screenshot-wrapper:hover {
+            transform:
+                perspective(1200px)
+                rotateY(0deg)
+                rotateX(0deg)
+                translateY(-5px);
+        }
+
+        .app-browser-bar {
+            height: 34px;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 6px;
+
+            padding: 0 12px;
+
+            background:
+                rgba(255,255,255,0.9);
+
+            border-radius: 15px 15px 0 0;
+
+            border-bottom:
+                1px solid rgba(0,0,0,0.08);
+        }
+
+        .browser-dot {
+            width: 9px;
+            height: 9px;
+
+            border-radius: 50%;
+        }
+
+        .browser-address {
+            flex: 1;
+
+            margin-left: 8px;
+
+            height: 21px;
+
+            display: flex;
+
+            align-items: center;
+
+            padding: 0 10px;
+
+            border-radius: 7px;
+
+            background:
+                rgba(0,0,0,0.05);
+
+            color: #777;
+
+            font-size: 0.62rem;
+        }
+
+        .app-real-image {
+            display: block;
+
+            width: 100%;
+
+            height: auto;
+
+            max-height: 390px;
+
+            object-fit: cover;
+
+            object-position: top;
+
+            border-radius:
+                0 0 15px 15px;
+
+            background: #ffffff;
+        }
+
+        .image-placeholder {
+            min-height: 300px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            flex-direction: column;
+
+            gap: 10px;
+
+            border-radius:
+                0 0 15px 15px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #f8fafc,
+                    #eaf3ff
+                );
+
+            color: #64748b;
+
+            text-align: center;
+        }
+
+        .image-placeholder i {
+            font-size: 3rem;
+
+            color: var(--primary);
+        }
+
+        .image-placeholder strong {
+            color: #334155;
+        }
+
+        .image-placeholder small {
+            max-width: 280px;
+        }
+
+        .preview-caption {
+            position: absolute;
+
+            right: -20px;
+
+            bottom: -20px;
+
+            z-index: 5;
+
+            max-width: 230px;
+
+            padding: 14px 16px;
+
+            border-radius: 16px;
+
+            background: var(--glass-card);
+
+            border:
+                1px solid var(--glass-border);
+
+            backdrop-filter: blur(18px);
+
+            -webkit-backdrop-filter: blur(18px);
+
+            box-shadow:
+                0 15px 35px rgba(0,0,0,0.12);
+        }
+
+        .preview-caption i {
+            color: var(--primary);
+
+            margin-right: 5px;
+        }
+
+        .preview-caption strong {
+            display: block;
+
+            font-size: 0.78rem;
+
+            margin-bottom: 3px;
+        }
+
+        .preview-caption span {
+            color: var(--text-secondary);
+
+            font-size: 0.68rem;
+
+            line-height: 1.4;
+        }
+
+
+        /* =========================================================
+           SLIDE NAVIGATION
+        ========================================================= */
+
+        .bottom-navigation {
+            width: 100%;
+
+            padding:
+                16px
+                clamp(16px, 5vw, 70px)
+                24px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            z-index: 30;
+
+            box-sizing: border-box;
+        }
+
+        .slide-counter {
+            color: var(--text-secondary);
+
+            font-size: 0.85rem;
+
+            font-weight: 600;
+
+            min-width: 70px;
+        }
+
+        .slide-counter strong {
+            color: var(--text-primary);
+        }
+
+        .dots {
+            display: flex;
+
+            align-items: center;
+
+            gap: 8px;
+        }
+
+        .dot {
+            width: 8px;
+            height: 8px;
+
+            padding: 0;
+
+            border: 0;
+
+            border-radius: 999px;
+
+            background:
+                rgba(128, 128, 128, 0.3);
+
+            cursor: pointer;
+
+            transition:
+                all 0.3s var(--transition);
+        }
+
+        .dot.active {
+            width: 28px;
+
+            background: var(--primary);
+        }
+
+        .nav-buttons {
+            display: flex;
+
+            align-items: center;
+
+            gap: 8px;
+        }
+
+        .nav-button {
+            width: 40px;
+            height: 40px;
+
+            border:
+                1px solid var(--border-color);
+
+            border-radius: 50%;
+
+            background: var(--glass-bg);
+
+            backdrop-filter: blur(12px);
+
+            -webkit-backdrop-filter: blur(12px);
+
+            color: var(--text-primary);
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            cursor: pointer;
+
+            transition: all 0.2s ease;
+        }
+
+        .nav-button:hover:not(:disabled) {
+            transform: translateY(-2px);
+
+            border-color: var(--primary);
+
+            background: var(--primary-soft);
+
+            color: var(--primary);
+        }
+
+        .nav-button:disabled {
+            opacity: 0.35;
+
+            cursor: default;
+        }
+
+
+        /* =========================================================
+           ANIMATION
+        ========================================================= */
+
+        @keyframes badgeFloat {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-8px);
+            }
+        }
+
+
+        /* =========================================================
+           SUBSCRIPTION SECTION
+        ========================================================= */
+
+        .subscription-section {
+            padding: 80px 20px;
+
+            position: relative;
+
+            background: var(--page-bg);
+        }
+
+        .section-header {
+            text-align: center;
+
+            max-width: 680px;
+
+            margin: 0 auto 40px;
+        }
+
+        .section-badge {
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 6px;
+
+            padding: 6px 16px;
+
+            border-radius: 999px;
+
+            background: var(--primary-soft);
+
+            color: var(--primary);
+
+            font-size: 0.78rem;
+
+            font-weight: 700;
+
+            text-transform: uppercase;
+
+            letter-spacing: 0.05em;
+
+            margin-bottom: 14px;
+        }
+
+        .section-title {
+            font-size:
+                clamp(1.8rem, 3.2vw, 2.8rem);
+
+            font-weight: 800;
+
+            letter-spacing: -0.03em;
+
+            margin-bottom: 14px;
+        }
+
+        .section-subtitle {
+            color: var(--text-secondary);
+
+            font-size: 1rem;
+
+            line-height: 1.6;
+        }
+
+
+        /* =========================================================
+           BILLING TOGGLE
+        ========================================================= */
+
+        .billing-toggle-container {
+            display: flex;
+
+            flex-wrap: wrap;
+
+            justify-content: center;
+
+            align-items: center;
+
+            gap: 12px;
+
+            margin-bottom: 36px;
+        }
+
+        .billing-toggle-wrapper {
+            display: inline-flex;
+
+            padding: 4px;
+
+            border-radius: 16px;
+
+            background: var(--glass-card);
+
+            border:
+                1px solid var(--border-color);
+
+            box-shadow:
+                0 4px 12px rgba(0,0,0,0.03);
+        }
+
+        .toggle-btn {
+            padding: 10px 20px;
+
+            border-radius: 12px;
+
+            border: none;
+
+            background: transparent;
+
+            color: var(--text-secondary);
+
+            font-weight: 600;
+
+            font-size: 0.92rem;
+
+            cursor: pointer;
+
+            transition:
+                all 0.25s var(--transition);
+        }
+
+        .toggle-btn.active {
+            background: var(--primary);
+
+            color: white;
+
+            box-shadow:
+                0 6px 18px var(--primary-glow);
+        }
+
+        .save-pill {
+            background: var(--success-soft);
+
+            color: var(--success);
+
+            font-size: 0.78rem;
+
+            font-weight: 700;
+
+            padding: 6px 12px;
+
+            border-radius: 999px;
+
+            border:
+                1px solid rgba(16,185,129,0.2);
+        }
+
+
+        /* =========================================================
+           PRICING CARDS
+        ========================================================= */
+
+        .pricing-cards-container {
+            max-width: 1050px;
+
+            margin: 0 auto;
+        }
+
+        .pricing-card {
+            border-radius: 28px;
+
+            background: var(--glass-card);
+
+            border:
+                1px solid var(--glass-border);
+
+            padding: 32px 28px;
+
+            position: relative;
+
+            backdrop-filter: blur(20px);
+
+            -webkit-backdrop-filter: blur(20px);
+
+            box-shadow: var(--card-shadow);
+
+            transition:
+                all 0.35s var(--transition);
+
+            height: 100%;
+
+            display: flex;
+
+            flex-direction: column;
+
+            justify-content: space-between;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-6px);
+
+            box-shadow: var(--shadow);
+
+            border-color:
+                var(--primary-soft);
+        }
+
+        .pricing-card.featured {
+            border:
+                2px solid var(--primary);
+
+            box-shadow:
+                0 20px 50px var(--primary-glow);
+        }
+
+        .popular-badge {
+            position: absolute;
+
+            top: -14px;
+
+            right: 24px;
+
+            background: var(--primary);
+
+            color: white;
+
+            font-size: 0.72rem;
+
+            font-weight: 700;
+
+            padding: 4px 14px;
+
+            border-radius: 999px;
+
+            text-transform: uppercase;
+
+            letter-spacing: 0.05em;
+
+            box-shadow:
+                0 4px 12px var(--primary-glow);
+        }
+
+        .price-amount {
+            font-size: 2.6rem;
+
+            font-weight: 800;
+
+            color: var(--text-primary);
+
+            line-height: 1.1;
+
+            letter-spacing: -0.03em;
+        }
+
+        .price-period {
+            color: var(--text-secondary);
+
+            font-size: 0.92rem;
+
+            font-weight: 500;
+        }
+
+        .plan-feature-list {
+            list-style: none;
+
+            padding: 0;
+
+            margin: 24px 0;
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 12px;
+        }
+
+        .plan-feature-list li {
+            display: flex;
+
+            align-items: center;
+
+            gap: 10px;
+
+            font-size: 0.92rem;
+
+            color: var(--text-primary);
+        }
+
+        .plan-feature-list i {
+            color: var(--success);
+
+            font-size: 1.05rem;
+        }
+
+
+        /* =========================================================
+           BREAKDOWN
+        ========================================================= */
+
+        .breakdown-box {
+            background:
+                rgba(10,132,255,0.05);
+
+            border:
+                1px dashed var(--primary);
+
+            border-radius: 16px;
+
+            padding: 14px;
+
+            margin-top: 14px;
+        }
+
+        .breakdown-item {
+            display: flex;
+
+            justify-content: space-between;
+
+            font-size: 0.85rem;
+
+            color: var(--text-secondary);
+
+            margin-bottom: 6px;
+        }
+
+        .breakdown-item.total {
+            border-top:
+                1px solid var(--border-color);
+
+            padding-top: 6px;
+
+            margin-bottom: 0;
+
+            font-weight: 700;
+
+            color: var(--text-primary);
+        }
+
+        .breakdown-item.saving {
+            color: var(--success);
+
+            font-weight: 700;
+        }
+
+
+        /* =========================================================
+           PROMO BANNER
+        ========================================================= */
+
+        .promo-banner {
+            max-width: 1050px;
+
+            margin: 36px auto 0;
+
+            padding: 22px 28px;
+
+            border-radius: 20px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    var(--primary-soft),
+                    rgba(16,185,129,0.1)
+                );
+
+            border:
+                1px solid var(--primary-glow);
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 18px;
+        }
+
+        .promo-icon {
+            width: 48px;
+            height: 48px;
+
+            border-radius: 14px;
+
+            background: var(--primary);
+
+            color: white;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            font-size: 1.35rem;
+
+            flex-shrink: 0;
+
+            box-shadow:
+                0 8px 20px var(--primary-glow);
+        }
+
+
+        /* =========================================================
+           SUPPORT CENTER
+        ========================================================= */
+
+        .support-section {
+            position: relative;
+
+            padding: 90px 20px;
+
+            background:
+                radial-gradient(
+                    circle at 15% 20%,
+                    rgba(10,132,255,0.08),
+                    transparent 30%
+                ),
+                radial-gradient(
+                    circle at 85% 80%,
+                    rgba(37,211,102,0.07),
+                    transparent 30%
+                ),
+                var(--page-bg);
+
+            border-top: 1px solid var(--border-color);
+        }
+
+        .support-container {
+            max-width: 1100px;
+
+            margin: 0 auto;
+        }
+
+        .support-card {
+            position: relative;
+
+            padding: 36px;
+
+            border-radius: 30px;
+
+            background: var(--glass-card);
+
+            border: 1px solid var(--glass-border);
+
+            box-shadow: var(--shadow);
+
+            overflow: hidden;
+        }
+
+        .support-card::before {
+            content: "";
+
+            position: absolute;
+
+            width: 260px;
+            height: 260px;
+
+            border-radius: 50%;
+
+            background: var(--primary-soft);
+
+            top: -150px;
+            right: -100px;
+
+            filter: blur(20px);
+
+            pointer-events: none;
+        }
+
+        .support-heading {
+            position: relative;
+
+            z-index: 1;
+
+            text-align: center;
+
+            max-width: 650px;
+
+            margin: 0 auto 36px;
+        }
+
+        .support-heading h2 {
+            font-size:
+                clamp(1.8rem, 3.2vw, 2.8rem);
+
+            font-weight: 800;
+
+            letter-spacing: -0.03em;
+
+            margin-bottom: 12px;
+        }
+
+        .support-heading p {
+            color: var(--text-secondary);
+
+            line-height: 1.6;
+
+            margin: 0;
+        }
+
+        .support-options {
+            position: relative;
+
+            z-index: 1;
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 18px;
+
+            margin-bottom: 38px;
+        }
+
+        .support-option {
+            display: flex;
+
+            flex-direction: column;
+
+            align-items: center;
+
+            text-align: center;
+
+            padding: 28px 20px;
+
+            border-radius: 22px;
+
+            background:
+                rgba(128,128,128,0.035);
+
+            border: 1px solid var(--border-color);
+
+            text-decoration: none;
+
+            color: var(--text-primary);
+
+            transition:
+                all 0.3s var(--transition);
+        }
+
+        .support-option:hover {
+            transform: translateY(-6px);
+
+            color: var(--text-primary);
+
+            border-color: var(--primary);
+
+            box-shadow:
+                0 16px 35px rgba(0,0,0,0.08);
+        }
+
+        .support-option-icon {
+            width: 62px;
+            height: 62px;
+
+            border-radius: 18px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            font-size: 1.65rem;
+
+            margin-bottom: 16px;
+        }
+
+        .support-option-icon.whatsapp {
+            color: white;
+
+            background: var(--whatsapp);
+
+            box-shadow:
+                0 10px 25px rgba(37,211,102,0.25);
+        }
+
+        .support-option-icon.phone {
+            color: white;
+
+            background: var(--primary);
+
+            box-shadow:
+                0 10px 25px var(--primary-glow);
+        }
+
+        .support-option-icon.email {
+            color: white;
+
+            background: #6366f1;
+
+            box-shadow:
+                0 10px 25px rgba(99,102,241,0.25);
+        }
+
+        .support-option h3 {
+            font-size: 1rem;
+
+            font-weight: 700;
+
+            margin-bottom: 7px;
+        }
+
+        .support-option p {
+            color: var(--text-secondary);
+
+            font-size: 0.82rem;
+
+            line-height: 1.5;
+
+            margin: 0 0 14px;
+        }
+
+        .support-action {
+            font-size: 0.8rem;
+
+            font-weight: 700;
+
+            color: var(--primary);
+        }
+
+        .whatsapp-action {
+            color: var(--whatsapp-dark);
+        }
+
+        .support-hours {
+            position: relative;
+
+            z-index: 1;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            gap: 9px;
+
+            padding: 12px 18px;
+
+            border-radius: 999px;
+
+            background: var(--success-soft);
+
+            color: var(--success);
+
+            font-size: 0.8rem;
+
+            font-weight: 700;
+
+            width: fit-content;
+
+            margin: 0 auto 35px;
+        }
+
+        .support-hours-dot {
+            width: 8px;
+            height: 8px;
+
+            border-radius: 50%;
+
+            background: var(--success);
+
+            box-shadow:
+                0 0 0 5px rgba(16,185,129,0.12);
+        }
+
+        .faq-title {
+            position: relative;
+
+            z-index: 1;
+
+            text-align: center;
+
+            font-size: 1.2rem;
+
+            font-weight: 800;
+
+            margin-bottom: 20px;
+        }
+
+        .faq-list {
+            position: relative;
+
+            z-index: 1;
+
+            max-width: 800px;
+
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: transparent;
+
+            border:
+                1px solid var(--border-color);
+
+            border-radius: 16px !important;
+
+            margin-bottom: 10px;
+
+            overflow: hidden;
+        }
+
+        .faq-button {
+            width: 100%;
+
+            border: none;
+
+            background: transparent;
+
+            color: var(--text-primary);
+
+            text-align: left;
+
+            padding: 17px 18px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 15px;
+
+            font-size: 0.9rem;
+
+            font-weight: 650;
+
+            cursor: pointer;
+        }
+
+        .faq-button:hover {
+            color: var(--primary);
+        }
+
+        .faq-button i {
+            color: var(--primary);
+
+            transition: transform 0.25s ease;
+
+            flex-shrink: 0;
+        }
+
+        .faq-answer {
+            display: none;
+
+            padding: 0 18px 18px;
+
+            color: var(--text-secondary);
+
+            font-size: 0.82rem;
+
+            line-height: 1.6;
+        }
+
+        .faq-item.open .faq-answer {
+            display: block;
+        }
+
+        .faq-item.open .faq-button i {
+            transform: rotate(180deg);
+        }
+
+
+        /* =========================================================
+           FLOATING SUPPORT BUTTONS
+        ========================================================= */
+
+        .floating-support {
+            position: fixed;
+
+            right: 20px;
+
+            bottom: 20px;
+
+            z-index: 2000;
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 10px;
+        }
+
+        .floating-support-btn {
+            width: 50px;
+            height: 50px;
+
+            border-radius: 50%;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            text-decoration: none;
+
+            color: white;
+
+            box-shadow:
+                0 10px 25px rgba(0,0,0,0.18);
+
+            transition:
+                all 0.25s var(--transition);
+        }
+
+        .floating-support-btn:hover {
+            transform: translateY(-4px) scale(1.04);
+
+            color: white;
+        }
+
+        .floating-whatsapp {
+            background: var(--whatsapp);
+
+            box-shadow:
+                0 10px 25px rgba(37,211,102,0.30);
+        }
+
+        .floating-call {
+            background: var(--primary);
+
+            box-shadow:
+                0 10px 25px var(--primary-glow);
+        }
+
+
+        /* =========================================================
+           TABLET
+        ========================================================= */
+
+        @media (max-width: 991.98px) {
+
+            :root {
+                --nav-height: 68px;
+            }
+
+            .welcome-topbar {
+                position: relative;
+            }
+
+            .welcome-hero {
+                min-height: auto;
+            }
+
+            .nav-menu {
+                display: none;
+            }
+
+            .slide {
+                padding:
+                    28px
+                    16px
+                    20px;
+            }
+
+            .slide-inner {
+                grid-template-columns: 1fr;
+
+                gap: 28px;
+
+                text-align: center;
+            }
+
+            .slide-content {
+                max-width: 100%;
+
+                margin: 0 auto;
+            }
+
+            .slide-description {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .download-group {
+                justify-content: center;
+            }
+
+            .slide-visual {
+                min-height: 260px;
+            }
+
+            .visual-card {
+                width:
+                    min(420px, 100%);
+
+                padding: 20px;
+            }
+
+            .floating-badge {
+                display: none;
+            }
+
+            .app-preview-visual {
+                min-height: 330px;
+            }
+
+            .app-screenshot-wrapper {
+                width: min(650px, 100%);
+
+                transform: none;
+            }
+
+            .app-screenshot-wrapper:hover {
+                transform: translateY(-4px);
+            }
+
+            .preview-caption {
+                right: 5px;
+
+                bottom: -12px;
+            }
+
+            .promo-banner {
+                flex-direction: column;
+
+                text-align: center;
+
+                padding: 20px;
+            }
+
+            .support-options {
+                grid-template-columns: 1fr;
+            }
+
+            .support-option {
+                padding: 24px 20px;
+            }
+        }
+
+
+        /* =========================================================
+           MOBILE
+        ========================================================= */
+
+        @media (max-width: 575.98px) {
+
+            :root {
+                --nav-height: 62px;
+            }
+
+            .brand {
+                font-size: 1rem;
+            }
+
+            .brand-icon {
+                width: 36px;
+                height: 36px;
+            }
+
+            .btn-download {
+                padding: 8px 12px;
+
+                gap: 8px;
+            }
+
+            .btn-download i {
+                font-size: 1.25rem;
+            }
+
+            .download-text strong {
+                font-size: 0.8rem;
+            }
+
+            .download-text small {
+                font-size: 0.6rem;
+            }
+
+            .pricing-card {
+                padding:
+                    24px 18px;
+            }
+
+            .price-amount {
+                font-size: 2.1rem;
+            }
+
+            .app-preview-visual {
+                min-height: 260px;
+            }
+
+            .app-browser-bar {
+                height: 28px;
+            }
+
+            .browser-address {
+                font-size: 0.5rem;
+            }
+
+            .app-real-image {
+                max-height: 270px;
+            }
+
+            .image-placeholder {
+                min-height: 220px;
+            }
+
+            .preview-caption {
+                display: none;
+            }
+
+            .bottom-navigation {
+                padding:
+                    12px
+                    16px
+                    18px;
+            }
+
+            .support-section {
+                padding: 65px 15px;
+            }
+
+            .support-card {
+                padding: 25px 16px;
+                border-radius: 24px;
+            }
+
+            .support-option {
+                padding: 22px 15px;
+            }
+
+            .support-hours {
+                font-size: 0.7rem;
+                text-align: center;
+            }
+
+            .floating-support {
+                right: 14px;
+                bottom: 14px;
+            }
+
+            .floating-support-btn {
+                width: 46px;
+                height: 46px;
+            }
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+
+<!-- =========================================================
+     TOP NAVIGATION
+========================================================= -->
+
+<header class="welcome-topbar">
+
+    <a href="#" class="brand">
+
+        <span class="brand-icon">
+            <i class="bi bi-bar-chart-fill"></i>
+        </span>
+
+        <span>
+            BizTrace
+            <small class="text-primary fs-6">IMS</small>
+        </span>
+
+    </a>
+
+
+    <ul class="nav-menu">
+
+        <li>
+            <a href="#overview" class="nav-link-custom">
+                Overview
+            </a>
+        </li>
+
+        <li>
+            <a href="#download" class="nav-link-custom">
+                Apps
+            </a>
+        </li>
+
+        <li>
+            <a href="#subscription" class="nav-link-custom">
+                Subscription Pricing
+            </a>
+        </li>
+
+        <li>
+            <a href="#support" class="nav-link-custom nav-support">
+                <span class="support-nav-dot"></span>
+                Support Center
+            </a>
+        </li>
+
+    </ul>
+
+</header>
+
+
+
+<!-- =========================================================
+     HERO SLIDER
+========================================================= -->
+
+<section class="welcome-hero" id="overview">
+
+    <div class="background-orb background-orb-one"></div>
+
+    <div class="background-orb background-orb-two"></div>
+
+
+    <main class="slider" id="welcomeSlider">
+
+        <div class="slides" id="slides">
+
+
+            <!-- =================================================
+                 SLIDE 1
+            ================================================== -->
+
+            <section class="slide" data-slide="0">
+
+                <div class="slide-inner">
+
+
+                    <div class="slide-content">
+
+                        <div class="slide-number">
+
+                            <i class="bi bi-stars"></i>
+
+                            WELCOME TO BIZTRACE
+
+                        </div>
+
+
+                        <h1 class="slide-title">
+
+                            Your business,
+                            <span class="accent">
+                                one flow.
+                            </span>
+
+                        </h1>
+
+
+                        <p class="slide-description">
+
+                            BizTrace IMS brings your sales, purchases,
+                            inventory, customers, suppliers, and
+                            real-time reports together into one
+                            seamless workspace.
+
+                        </p>
+
+
+                        <div class="download-group" id="download">
+
+                            <a
+                                href="https://biztrace-ims.onrender.com/"
+                                class="btn-download btn-primary-app"
+                            >
+
+                                <i class="bi bi-globe"></i>
+
+                                <div class="download-text">
+
+                                    <small>
+                                        Access Now
+                                    </small>
+
+                                    <strong>
+                                        Web Application
+                                    </strong>
+
+                                </div>
+
+                            </a>
+
+
+                            <a
+                                href="#subscription"
+                                class="btn-download"
+                            >
+
+                                <i class="bi bi-apple"></i>
+
+                                <div class="download-text">
+
+                                    <small>
+                                        Download on the
+                                    </small>
+
+                                    <strong>
+                                        App Store
+                                    </strong>
+
+                                </div>
+
+                            </a>
+
+
+                            <a
+                                href="#subscription"
+                                class="btn-download"
+                            >
+
+                                <i class="bi bi-google-play"></i>
+
+                                <div class="download-text">
+
+                                    <small>
+                                        GET IT ON
+                                    </small>
+
+                                    <strong>
+                                        Google Play
+                                    </strong>
+
+                                </div>
+
+                            </a>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="slide-visual">
+
+                        <div class="visual-glow"></div>
+
+
+                        <div class="visual-card">
+
+                            <div class="feature-icon-badge">
+
+                                <i class="bi bi-grid-1x2"></i>
+
+                            </div>
+
+
+                            <div class="mockup-header">
+
+                                <span
+                                    class="mockup-dot"
+                                    style="background:#ff5f56"
+                                ></span>
+
+                                <span
+                                    class="mockup-dot"
+                                    style="background:#ffbd2e"
+                                ></span>
+
+                                <span
+                                    class="mockup-dot"
+                                    style="background:#27c93f"
+                                ></span>
+
+                                <small
+                                    class="text-secondary ms-2"
+                                    style="font-size:0.7rem;"
+                                >
+                                    BizTrace Dashboard
+                                </small>
+
+                            </div>
+
+
+                            <div class="mockup-stats-grid">
+
+                                <div class="stat-box">
+
+                                    <div class="title">
+                                        Total Revenue
+                                    </div>
+
+                                    <div class="value">
+                                        ₦4,829,000
+                                    </div>
+
+                                    <small
+                                        class="text-success"
+                                        style="font-size:0.72rem;"
+                                    >
+                                        <i class="bi bi-arrow-up-short"></i>
+                                        +14.2%
+                                    </small>
+
+                                </div>
+
+
+                                <div class="stat-box">
+
+                                    <div class="title">
+                                        Active Orders
+                                    </div>
+
+                                    <div class="value">
+                                        1,240
+                                    </div>
+
+                                    <small
+                                        class="text-primary"
+                                        style="font-size:0.72rem;"
+                                    >
+                                        <i class="bi bi-activity"></i>
+                                        Live updates
+                                    </small>
+
+                                </div>
+
+                            </div>
+
+
+                            <div
+                                style="height:80px;width:100%;"
+                                class="mt-2"
+                            >
+
+                                <svg
+                                    viewBox="0 0 300 80"
+                                    style="width:100%;height:100%;"
+                                >
+
+                                    <path
+                                        d="M0 60 Q60 20,120 45 T240 15 T300 30"
+                                        fill="none"
+                                        stroke="#0a84ff"
+                                        stroke-width="3"
+                                    />
+
+                                    <path
+                                        d="M0 60 Q60 20,120 45 T240 15 T300 30 L300 80 L0 80 Z"
+                                        fill="url(#blue-grad)"
+                                        opacity="0.15"
+                                    />
+
+                                    <defs>
+
+                                        <linearGradient
+                                            id="blue-grad"
+                                            x1="0"
+                                            y1="0"
+                                            x2="0"
+                                            y2="1"
+                                        >
+
+                                            <stop
+                                                offset="0%"
+                                                stop-color="#0a84ff"
+                                            />
+
+                                            <stop
+                                                offset="100%"
+                                                stop-color="#0a84ff"
+                                                stop-opacity="0"
+                                            />
+
+                                        </linearGradient>
+
+                                    </defs>
+
+                                </svg>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="floating-badge badge-one">
+
+                            <i class="bi bi-check-circle-fill"></i>
+
+                            Everything connected
+
+                        </div>
+
+
+                        <div class="floating-badge badge-two">
+
+                            <i class="bi bi-lightning-charge-fill"></i>
+
+                            Work smarter
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =================================================
+                 SLIDE 2
+            ================================================== -->
+
+            <section class="slide" data-slide="1">
+
+                <div class="slide-inner">
+
+
+                    <div class="slide-content">
+
+                        <div class="slide-number">
+
+                            <i class="bi bi-box-seam"></i>
+
+                            SMART INVENTORY
+
+                        </div>
+
+
+                        <h1 class="slide-title">
+
+                            Real-time
+                            <span class="accent">
+                                stock tracking.
+                            </span>
+
+                        </h1>
+
+
+                        <p class="slide-description">
+
+                            Never run out of stock or overstock again.
+                            Track products, monitor stock levels,
+                            manage purchases and receive low-stock
+                            notifications.
+
+                        </p>
+
+
+                        <div class="download-group">
+
+                            <a
+                                href="https://biztrace-ims.onrender.com/"
+                                class="btn-download btn-primary-app"
+                            >
+
+                                <i class="bi bi-globe"></i>
+
+                                <div class="download-text">
+
+                                    <small>
+                                        Access Now
+                                    </small>
+
+                                    <strong>
+                                        Website Access
+                                    </strong>
+
+                                </div>
+
+                            </a>
+
+
+                            <a
+                                href="#subscription"
+                                class="btn-download"
+                            >
+
+                                <i class="bi bi-apple"></i>
+
+                                <div class="download-text">
+
+                                    <small>
+                                        Download on the
+                                    </small>
+
+                                    <strong>
+                                        App Store
+                                    </strong>
+
+                                </div>
+
+                            </a>
+
+
+                            <a
+                                href="#subscription"
+                                class="btn-download"
+                            >
+
+                                <i class="bi bi-google-play"></i>
+
+                                <div class="download-text">
+
+                                    <small>
+                                        GET IT ON
+                                    </small>
+
+                                    <strong>
+                                        Google Play
+                                    </strong>
+
+                                </div>
+
+                            </a>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="slide-visual">
+
+                        <div class="visual-glow"></div>
+
+
+                        <div class="visual-card">
+
+                            <div class="feature-icon-badge">
+
+                                <i class="bi bi-box-seam"></i>
+
+                            </div>
+
+
+                            <div
+                                class="d-flex align-items-center justify-content-between mb-2"
+                            >
+
+                                <h6 class="m-0 fw-bold">
+                                    Stock Status
+                                </h6>
+
+                                <span
+                                    class="badge bg-primary-subtle text-primary rounded-pill"
+                                >
+                                    Updated Now
+                                </span>
+
+                            </div>
+
+
+                            <div
+                                class="d-flex flex-column gap-2"
+                            >
+
+                                <div
+                                    class="p-2 border rounded d-flex align-items-center justify-content-between"
+                                    style="background:rgba(128,128,128,0.03);"
+                                >
+
+                                    <div
+                                        class="d-flex align-items-center gap-2"
+                                    >
+
+                                        <i
+                                            class="bi bi-laptop fs-5 text-primary"
+                                        ></i>
+
+                                        <div>
+
+                                            <div
+                                                class="fw-semibold"
+                                            >
+                                                Pro Laptops
+                                            </div>
+
+                                            <small class="text-secondary">
+                                                SKU: <code> BZ-9021</code>
+                                            </small>
+
+                                        </div>
+
+                                    </div>
+
+                                    <span
+                                        class="badge bg-success-subtle text-success"
+                                    >
+                                        142 In Stock
+                                    </span>
+
+                                </div>
+
+
+                                <div
+                                    class="p-2 border rounded d-flex align-items-center justify-content-between"
+                                    style="background:rgba(128,128,128,0.03);"
+                                >
+
+                                    <div
+                                        class="d-flex align-items-center gap-2"
+                                    >
+
+                                        <i
+                                            class="bi bi-phone fs-5 text-primary"
+                                        ></i>
+
+                                        <div>
+
+                                            <div
+                                                class="fw-semibold"
+                                            >
+                                                Smartphones
+                                            </div>
+
+                                            <small class="text-secondary">
+                                            SKU: <code>BZ-4011</code>
+                                            </small>
+
+                                        </div>
+
+                                    </div>
+
+                                    <span
+                                        class="badge bg-warning-subtle text-warning"
+                                    >
+                                        8 Low Stock
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="floating-badge badge-one">
+
+                            <i class="bi bi-bell-fill"></i>
+
+                            Instant Low Stock Alerts
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =================================================
+                 SLIDE 3
+            ================================================== -->
+
+            <section class="slide" data-slide="2">
+
+                <div class="slide-inner">
+
+
+                    <div class="slide-content">
+
+                        <div class="slide-number">
+
+                            <i class="bi bi-graph-up-arrow"></i>
+
+                            ANALYTICS & SALES
+
+                        </div>
+
+
+                        <h1 class="slide-title">
+
+                            Data-driven
+                            <span class="accent">
+                                decisions.
+                            </span>
+
+                        </h1>
+
+
+                        <p class="slide-description">
+
+                            Empower your team with insightful reports.
+                            Monitor sales performance, profitability,
+                            customer purchase history, expenses and
+                            business activity.
+
+                        </p>
+
+
+                        <div class="download-group">
+
+                            <a
+                                href="https://biztrace-ims.onrender.com/"
+                                class="btn-download btn-primary-app"
+                            >
+
+                                <i class="bi bi-globe"></i>
+
+                                <div class="download-text">
+
+                                    <small>
+                                        Access Now
+                                    </small>
+
+                                    <strong>
+                                        Website Access
+                                    </strong>
+
+                                </div>
+
+                            </a>
+
+
+                            <a
+                                href="#subscription"
+                                class="btn-download"
+                            >
+
+                                <i class="bi bi-apple"></i>
+
+                                <div class="download-text">
+
+                                    <small>
+                                        Download on the
+                                    </small>
+
+                                    <strong>
+                                        App Store
+                                    </strong>
+
+                                </div>
+
+                            </a>
+
+
+                            <a
+                                href="#subscription"
+                                class="btn-download"
+                            >
+
+                                <i class="bi bi-google-play"></i>
+
+                                <div class="download-text">
+
+                                    <small>
+                                        GET IT ON
+                                    </small>
+
+                                    <strong>
+                                        Google Play
+                                    </strong>
+
+                                </div>
+
+                            </a>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="slide-visual">
+
+                        <div class="visual-glow"></div>
+
+
+                        <div class="visual-card">
+
+                            <div class="feature-icon-badge">
+
+                                <i class="bi bi-pie-chart-fill"></i>
+
+                            </div>
+
+
+                            <h6 class="m-0 fw-bold mb-3">
+                                Sales Growth
+                            </h6>
+
+
+                            <div
+                                class="d-flex align-items-center justify-content-around text-center my-2"
+                            >
+
+                                <div>
+
+                                    <small class="text-muted">
+                                        This Month
+                                    </small>
+
+                                    <div
+                                        class="fs-5 fw-bold text-primary"
+                                    >
+                                        ₦3,450,000
+                                    </div>
+
+                                </div>
+
+
+                                <div class="border-start ps-3">
+
+                                    <small class="text-muted">
+                                        Growth Rate
+                                    </small>
+
+                                    <div
+                                        class="fs-5 fw-bold text-success"
+                                    >
+                                        +28.4%
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+
+                            <div
+                                class="progress"
+                                style="height:10px;border-radius:10px;"
+                            >
+
+                                <div
+                                    class="progress-bar bg-primary"
+                                    role="progressbar"
+                                    style="width:70%"
+                                ></div>
+
+                                <div
+                                    class="progress-bar bg-info"
+                                    role="progressbar"
+                                    style="width:30%"
+                                ></div>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="floating-badge badge-two">
+
+                            <i class="bi bi-graph-up"></i>
+
+                            +28.4% Growth
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =================================================
+                 SLIDE 4
+            ================================================== -->
+
+            <section class="slide" data-slide="3">
+
+                <div class="slide-inner">
+
+
+                    <div class="slide-content">
+
+                        <div class="slide-number">
+
+                            <i class="bi bi-display"></i>
+
+                            SEE THE APP FIRST
+
+                        </div>
+
+
+                        <h1 class="slide-title">
+
+                            See how
+                            <span class="accent">
+                                BizTrace IMS looks.
+                            </span>
+
+                        </h1>
+
+
+                        <p class="slide-description">
+
+                            Before you start managing your business,
+                            take a look at the BizTrace IMS interface
+                            and get familiar with the workspace,
+                            dashboard and business tools.
+
+                        </p>
+
+
+                        <div class="download-group">
+
+                            <a
+                                href="https://biztrace-ims.onrender.com/"
+                                class="btn-download btn-primary-app"
+                            >
+
+                                <i class="bi bi-globe"></i>
+
+                                <div class="download-text">
+
+                                    <small>
+                                        Access Now
+                                    </small>
+
+                                    <strong>
+                                        Open BizTrace IMS
+                                    </strong>
+
+                                </div>
+
+                            </a>
+
+
+                            <a
+                                href="#support"
+                                class="btn-download"
+                            >
+
+                                <i class="bi bi-headset"></i>
+
+                                <div class="download-text">
+
+                                    <small>
+                                        Need Help?
+                                    </small>
+
+                                    <strong>
+                                        Contact Support
+                                    </strong>
+
+                                </div>
+
+                            </a>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="app-preview-visual">
+
+                        <div class="app-preview-glow"></div>
+
+
+                        <div class="app-screenshot-wrapper">
+
+                            <div class="app-browser-bar">
+
+                                <span
+                                    class="browser-dot"
+                                    style="background:#ff5f56;"
+                                ></span>
+
+                                <span
+                                    class="browser-dot"
+                                    style="background:#ffbd2e;"
+                                ></span>
+
+                                <span
+                                    class="browser-dot"
+                                    style="background:#27c93f;"
+                                ></span>
+
+                                <div class="browser-address">
+
+                                    <i class="bi bi-lock-fill me-1"></i>
+
+                                    biztrace-ims.onrender.com
+
+                                </div>
+
+                            </div>
+
+
+                            <!-- =================================================
+                                 YOUR REAL APP IMAGE
+                                 CHANGE THIS PATH IF NEEDED
+                            ================================================== -->
+
+                            <img
+                                src="images/BizTrace IMS.png"
+                                alt="BizTrace IMS Dashboard Preview"
+                                class="app-real-image"
+                                onerror="this.style.display='none'; document.getElementById('imagePlaceholder').style.display='flex';"
+                            >
+
+
+                            <div
+                                class="image-placeholder"
+                                id="imagePlaceholder"
+                                style="display:none;"
+                            >
+
+                                <i class="bi bi-image"></i>
+
+                                <strong>
+                                    BizTrace IMS App Preview
+                                </strong>
+
+                                <small>
+                                    Add your dashboard screenshot here:
+                                    <br>
+                                    <b>
+                                        images/BizTrace IMS.png
+                                    </b>
+                                </small>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="preview-caption">
+
+                            <strong>
+
+                                <i class="bi bi-check-circle-fill"></i>
+
+                                Your business workspace
+
+                            </strong>
+
+                            <span>
+
+                                A quick preview of the interface
+                                users see when they enter BizTrace IMS.
+
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+        </div>
+
+    </main>
+
+
+
+    <!-- =========================================================
+         BOTTOM SLIDER NAVIGATION
+    ========================================================= -->
+
+    <div class="bottom-navigation">
+
+        <div class="slide-counter">
+
+            <strong id="currentSlideNum">
+                01
+            </strong>
+
+            /
+
+            <span id="totalSlidesNum">
+                04
+            </span>
+
+        </div>
+
+
+        <div
+            class="dots"
+            id="dotsContainer"
+        >
+
+            <button
+                class="dot active"
+                onclick="goToSlide(0)"
+                aria-label="Slide 1"
+            ></button>
+
+            <button
+                class="dot"
+                onclick="goToSlide(1)"
+                aria-label="Slide 2"
+            ></button>
+
+            <button
+                class="dot"
+                onclick="goToSlide(2)"
+                aria-label="Slide 3"
+            ></button>
+
+            <button
+                class="dot"
+                onclick="goToSlide(3)"
+                aria-label="Slide 4"
+            ></button>
+
+        </div>
+
+
+        <div class="nav-buttons">
+
+            <button
+                class="nav-button"
+                id="prevBtn"
+                onclick="prevSlide()"
+                aria-label="Previous Slide"
+            >
+
+                <i class="bi bi-chevron-left"></i>
+
+            </button>
+
+
+            <button
+                class="nav-button"
+                id="nextBtn"
+                onclick="nextSlide()"
+                aria-label="Next Slide"
+            >
+
+                <i class="bi bi-chevron-right"></i>
+
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     SUBSCRIPTION SECTION
+========================================================= -->
+
+<section
+    class="subscription-section"
+    id="subscription"
+>
+
+    <div class="container">
+
+
+        <div class="section-header">
+
+            <div class="section-badge">
+
+                <i class="bi bi-credit-card-2-front-fill"></i>
+
+                Subscription Plans
+
+            </div>
+
+
+            <h2 class="section-title">
+
+                Transparent & Predictable Pricing
+
+            </h2>
+
+
+            <p class="section-subtitle">
+
+                Choose the subscription that fits your
+                business needs. Scale seamlessly with
+                full access to all features.
+
+            </p>
+
+        </div>
+
+
+
+        <!-- BILLING TOGGLE -->
+
+        <div class="billing-toggle-container">
+
+            <div class="billing-toggle-wrapper">
+
+                <button
+                    class="toggle-btn active"
+                    id="btnMonthly"
+                    onclick="setBilling('monthly')"
+                >
+                    Monthly Billing
+                </button>
+
+
+                <button
+                    class="toggle-btn"
+                    id="btnYearly"
+                    onclick="setBilling('yearly')"
+                >
+                    Yearly Billing
+                </button>
+
+            </div>
+
+
+            <span class="save-pill">
+
+                <i class="bi bi-stars"></i>
+
+                Annual Saving: ₦48,000 (20%)
+
+            </span>
+
+        </div>
+
+
+
+        <!-- PRICING -->
+
+        <div class="pricing-cards-container">
+
+            <div class="row g-4 justify-content-center">
+
+
+                <!-- MONTHLY -->
+
+                <div class="col-lg-5 col-md-6">
+
+                    <div
+                        class="pricing-card"
+                        id="cardMonthly"
+                    >
+
+                        <div>
+
+                            <div
+                                class="d-flex align-items-center justify-content-between mb-3"
+                            >
+
+                                <h3 class="h4 fw-bold m-0">
+                                    Monthly Plan
+                                </h3>
+
+                                <span
+                                    class="badge bg-primary-subtle text-primary rounded-pill px-3 py-2"
+                                >
+                                    Flexible
+                                </span>
+
+                            </div>
+
+
+                            <p
+                                class="text-secondary small mb-4"
+                            >
+
+                                Ideal for businesses preferring
+                                month-to-month flexibility without
+                                long commitments.
+
+                            </p>
+
+
+                            <div class="mb-3">
+
+                                <span class="price-amount">
+                                    ₦20,000
+                                </span>
+
+                                <span class="price-period">
+                                    / per month
+                                </span>
+
+                            </div>
+
+
+                            <ul class="plan-feature-list">
+
+                                <li>
+                                    <i class="bi bi-check-circle-fill"></i>
+                                    Full Inventory & Stock Management
+                                </li>
+
+                                <li>
+                                    <i class="bi bi-check-circle-fill"></i>
+                                    Sales, Payment & Purchase Tracking
+                                </li>
+
+                                <li>
+                                    <i class="bi bi-check-circle-fill"></i>
+                                    Customer & Supplier Relationship Tools
+                                </li>
+
+                                <li>
+                                    <i class="bi bi-check-circle-fill"></i>
+                                    Real-time Analytics & Business Reports
+                                </li>
+
+                                <li>
+                                    <i class="bi bi-check-circle-fill"></i>
+                                    All Business activities
+                                </li>
+
+                            </ul>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- YEARLY -->
+
+                <div class="col-lg-5 col-md-6">
+
+                    <div
+                        class="pricing-card featured"
+                        id="cardYearly"
+                    >
+
+                        <span class="popular-badge">
+
+                            <i class="bi bi-fire"></i>
+
+                            Best Value
+
+                        </span>
+
+
+                        <div>
+
+                            <div
+                                class="d-flex align-items-center justify-content-between mb-3"
+                            >
+
+                                <h3
+                                    class="h4 fw-bold m-0 text-primary"
+                                >
+                                    Yearly Plan
+                                </h3>
+
+                                <span
+                                    class="badge bg-success-subtle text-success rounded-pill px-3 py-2"
+                                >
+                                    Save 20%
+                                </span>
+
+                            </div>
+
+
+                            <p
+                                class="text-secondary small mb-4"
+                            >
+
+                                Maximized savings with 12 months
+                                of uninterrupted management and
+                                full platform features.
+
+                            </p>
+
+
+                            <div class="mb-2">
+
+                                <span class="price-amount">
+                                    ₦192,000
+                                </span>
+
+                                <span class="price-period">
+                                    / per year
+                                </span>
+
+                            </div>
+
+
+                            <div
+                                class="text-success fw-semibold small mb-3"
+                            >
+
+                                <i
+                                    class="bi bi-piggy-bank-fill me-1"
+                                ></i>
+
+                                Annual Saving: ₦48,000 (20%)
+
+                            </div>
+
+
+                            <div class="breakdown-box">
+
+                                <div class="breakdown-item">
+
+                                    <span>
+                                        Standard Rate
+                                        (₦20,000 × 12)
+                                    </span>
+
+                                    <span>
+                                        ₦240,000
+                                    </span>
+
+                                </div>
+
+
+                                <div class="breakdown-item">
+
+                                    <span>
+                                        Yearly Subscription
+                                    </span>
+
+                                    <strong>
+                                        ₦192,000
+                                    </strong>
+
+                                </div>
+
+
+                                <div class="breakdown-item saving">
+
+                                    <span>
+                                        Saving
+                                    </span>
+
+                                    <span>
+                                        ₦48,000 (20%)
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+
+                            <ul class="plan-feature-list">
+
+                                <li>
+                                    <i class="bi bi-check-circle-fill"></i>
+                                    All Monthly Plan Features Included
+                                </li>
+
+                                <li>
+                                    <i class="bi bi-check-circle-fill"></i>
+                                    Guaranteed Fixed Rate for 12 Months
+                                </li>
+
+                            </ul>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- PROMO -->
+
+            <div class="promo-banner">
+
+                <div class="promo-icon">
+
+                    <i class="bi bi-gift-fill"></i>
+
+                </div>
+
+
+                <div>
+
+                    <h4 class="h5 fw-bold m-0 mb-1">
+
+                        New Registration Promotional Period
+
+                    </h4>
+
+
+                    <p
+                        class="m-0 text-secondary fs-6"
+                    >
+
+                        New companies receive a
+                        <strong>
+                            1-week promotional period
+                        </strong>
+                        to explore and use BizTrace IMS.
+                        After the promotional period, an active
+                        monthly or yearly subscription is required.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     SUPPORT CENTER
+========================================================= -->
+
+<section
+    class="support-section"
+    id="support"
+>
+
+    <div class="support-container">
+
+        <div class="support-card">
+
+
+            <!-- SUPPORT HEADER -->
+
+            <div class="support-heading">
+
+                <div class="section-badge">
+
+                    <i class="bi bi-headset"></i>
+
+                    Support Center
+
+                </div>
+
+
+                <h2>
+
+                    We're here to help.
+
+                </h2>
+
+
+                <p>
+
+                    Need help with BizTrace IMS, your subscription,
+                    account setup, sales, inventory, reports or
+                    another part of the platform? Contact our
+                    support team directly.
+
+                </p>
+
+            </div>
+
+
+
+            <!-- SUPPORT OPTIONS -->
+
+            <div class="support-options">
+
+
+                <!-- WHATSAPP -->
+
+                <a
+                    href="https://wa.me/2348154675347?text=Hello%20BizTrace%20Support%2C%20I%20need%20help%20with%20BizTrace%20IMS."
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="support-option"
+                >
+
+                    <div class="support-option-icon whatsapp">
+
+                        <i class="bi bi-whatsapp"></i>
+
+                    </div>
+
+
+                    <h3>
+                        WhatsApp Support
+                    </h3>
+
+
+                    <p>
+
+                        Chat directly with the BizTrace
+                        support team through WhatsApp.
+
+                    </p>
+
+
+                    <span class="support-action whatsapp-action">
+
+                        Chat on WhatsApp
+                        <i class="bi bi-arrow-up-right ms-1"></i>
+
+                    </span>
+
+                </a>
+
+
+
+                <!-- CALL -->
+
+                <a
+                    href="tel:+2348154675347"
+                    class="support-option"
+                >
+
+                    <div class="support-option-icon phone">
+
+                        <i class="bi bi-telephone-fill"></i>
+
+                    </div>
+
+
+                    <h3>
+                        Call Support
+                    </h3>
+
+
+                    <p>
+
+                        Speak directly with our support
+                        team for immediate assistance.
+
+                    </p>
+
+
+                    <span class="support-action">
+
+                        Call Support
+                        <i class="bi bi-telephone ms-1"></i>
+
+                    </span>
+
+                </a>
+
+
+
+                <!-- EMAIL -->
+
+                <a
+                    href="mailto:biztraceims@gmail.com?subject=BizTrace%20IMS%20Support"
+                    class="support-option"
+                >
+
+                    <div class="support-option-icon email">
+
+                        <i class="bi bi-envelope-fill"></i>
+
+                    </div>
+
+
+                    <h3>
+                        Email Support
+                    </h3>
+
+
+                    <p>
+
+                        Send us a detailed message and
+                        we'll help you resolve your issue.
+
+                    </p>
+
+
+                    <span class="support-action">
+
+                        Send an Email
+                        <i class="bi bi-arrow-up-right ms-1"></i>
+
+                    </span>
+
+                </a>
+
+            </div>
+
+
+
+            <!-- SUPPORT STATUS -->
+
+            <div class="support-hours">
+
+                <span class="support-hours-dot"></span>
+
+                Support Center Available
+
+            </div>
+
+
+
+            <!-- FAQ -->
+
+            <h3 class="faq-title">
+
+                Frequently Asked Questions
+
+            </h3>
+
+
+            <div class="faq-list">
+
+
+                <!-- FAQ 1 -->
+
+                <div class="faq-item">
+
+                    <button
+                        class="faq-button"
+                        onclick="toggleFAQ(this)"
+                        type="button"
+                    >
+
+                        <span>
+                            How do I get started with BizTrace IMS?
+                        </span>
+
+                        <i class="bi bi-chevron-down"></i>
+
+                    </button>
+
+
+                    <div class="faq-answer">
+
+                        Register your company, complete your
+                        company setup and start adding your
+                        products, customers and suppliers.
+                        You can then begin recording sales,
+                        purchases, expenses and other business
+                        activities.
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- FAQ 2 -->
+
+                <div class="faq-item">
+
+                    <button
+                        class="faq-button"
+                        onclick="toggleFAQ(this)"
+                        type="button"
+                    >
+
+                        <span>
+                            How can I contact BizTrace support?
+                        </span>
+
+                        <i class="bi bi-chevron-down"></i>
+
+                    </button>
+
+
+                    <div class="faq-answer">
+
+                        You can contact the support team through
+                        WhatsApp, phone call or email using the
+                        support options above.
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- FAQ 3 -->
+
+                <div class="faq-item">
+
+                    <button
+                        class="faq-button"
+                        onclick="toggleFAQ(this)"
+                        type="button"
+                    >
+
+                        <span>
+                            What can I manage with BizTrace IMS?
+                        </span>
+
+                        <i class="bi bi-chevron-down"></i>
+
+                    </button>
+
+
+                    <div class="faq-answer">
+
+                        BizTrace IMS provides tools for managing
+                        sales, purchases, inventory, products,
+                        customers, suppliers, expenses, payments, revievables,
+                        payables, cash deposits, users, roles, permissions, and business reports from one workspace.
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- FAQ 4 -->
+
+                <div class="faq-item">
+
+                    <button
+                        class="faq-button"
+                        onclick="toggleFAQ(this)"
+                        type="button"
+                    >
+
+                        <span>
+                            How does the promotional period work?
+                        </span>
+
+                        <i class="bi bi-chevron-down"></i>
+
+                    </button>
+
+
+                    <div class="faq-answer">
+
+                        New companies receive a 1-week promotional
+                        period to explore and use BizTrace IMS.
+                        After the promotional period, an active
+                        subscription is required.
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- FAQ 5 -->
+
+                <div class="faq-item">
+
+                    <button
+                        class="faq-button"
+                        onclick="toggleFAQ(this)"
+                        type="button"
+                    >
+
+                        <span>
+                            Can I use BizTrace IMS on different devices?
+                        </span>
+
+                        <i class="bi bi-chevron-down"></i>
+
+                    </button>
+
+
+                    <div class="faq-answer">
+
+                        BizTrace IMS is designed as a web-based
+                        business management platform that can be
+                        accessed from supported devices through
+                        a modern web browser.
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     FLOATING SUPPORT BUTTONS
+========================================================= -->
+
+<div class="floating-support">
+
+
+    <!-- WhatsApp -->
+
+    <a
+        href="https://wa.me/2348154675347?text=Hello%20BizTrace%20Support%2C%20I%20need%20help%20with%20BizTrace%20IMS."
+        target="_blank"
+        rel="noopener noreferrer"
+        class="floating-support-btn floating-whatsapp"
+        aria-label="Chat with BizTrace on WhatsApp"
+        title="WhatsApp Support"
+    >
+
+        <i class="bi bi-whatsapp"></i>
+
+    </a>
+
+
+    <!-- Phone -->
+
+    <a
+        href="tel:+2348154675347"
+        class="floating-support-btn floating-call"
+        aria-label="Call BizTrace Support"
+        title="Call Support"
+    >
+
+        <i class="bi bi-telephone-fill"></i>
+
+    </a>
+
+</div>
+
+
+
+<!-- =========================================================
+     FOOTER
+========================================================= -->
+
+<footer
+    class="py-4 text-center border-top"
+    style="border-color:var(--border-color) !important;"
+>
+
+    <div class="container">
+
+        <div class="mb-2">
+
+            <a
+                href="#support"
+                class="text-primary text-decoration-none fw-semibold"
+            >
+
+                <i class="bi bi-headset me-1"></i>
+
+                Need Help? Visit Support Center
+
+            </a>
+
+        </div>
+
+
+        <p class="small text-secondary mb-0">
+
+            © 2026 BizTrace IMS.
+            All rights reserved.
+
+        </p>
+
+    </div>
+
+</footer>
+
+
+
+<!-- =========================================================
+     JAVASCRIPT
+========================================================= -->
+
+<script>
+
+    /* =========================================================
+       HERO SLIDER
+    ========================================================= */
+
+    let currentSlide = 0;
+
+    const slidesContainer =
+        document.getElementById('slides');
+
+    const totalSlides =
+        document.querySelectorAll('.slide').length;
+
+    const currentSlideNum =
+        document.getElementById('currentSlideNum');
+
+    const totalSlidesNum =
+        document.getElementById('totalSlidesNum');
+
+    const prevBtn =
+        document.getElementById('prevBtn');
+
+    const nextBtn =
+        document.getElementById('nextBtn');
+
+    const dots =
+        document.querySelectorAll('.dot');
+
+
+    if (totalSlidesNum) {
+
+        totalSlidesNum.textContent =
+            totalSlides < 10
+                ? `0${totalSlides}`
+                : totalSlides;
+
+    }
+
+
+    function updateSlider() {
+
+        if (!slidesContainer) return;
+
+
+        slidesContainer.style.transform =
+            `translate3d(-${currentSlide * 100}%, 0, 0)`;
+
+
+        if (currentSlideNum) {
+
+            currentSlideNum.textContent =
+                (currentSlide + 1) < 10
+                    ? `0${currentSlide + 1}`
+                    : currentSlide + 1;
+
+        }
+
+
+        dots.forEach((dot, index) => {
+
+            dot.classList.toggle(
+                'active',
+                index === currentSlide
+            );
+
+        });
+
+
+        if (prevBtn) {
+
+            prevBtn.disabled =
+                currentSlide === 0;
+
+        }
+
+
+        if (nextBtn) {
+
+            nextBtn.disabled =
+                currentSlide === totalSlides - 1;
+
+        }
+
+    }
+
+
+    function goToSlide(index) {
+
+        if (
+            index >= 0 &&
+            index < totalSlides
+        ) {
+
+            currentSlide = index;
+
+            updateSlider();
+
+        }
+
+    }
+
+
+    function nextSlide() {
+
+        if (
+            currentSlide <
+            totalSlides - 1
+        ) {
+
+            currentSlide++;
+
+            updateSlider();
+
+        }
+
+    }
+
+
+    function prevSlide() {
+
+        if (currentSlide > 0) {
+
+            currentSlide--;
+
+            updateSlider();
+
+        }
+
+    }
+
+
+    /* =========================================================
+       KEYBOARD NAVIGATION
+    ========================================================= */
+
+    document.addEventListener(
+        'keydown',
+        (e) => {
+
+            if (e.key === 'ArrowRight') {
+                nextSlide();
+            }
+
+            if (e.key === 'ArrowLeft') {
+                prevSlide();
+            }
+
+        }
+    );
+
+
+    /* =========================================================
+       TOUCH SWIPE
+    ========================================================= */
+
+    let touchStartX = 0;
+
+    let touchEndX = 0;
+
+    const sliderEl =
+        document.getElementById('welcomeSlider');
+
+
+    if (sliderEl) {
+
+        sliderEl.addEventListener(
+            'touchstart',
+            (e) => {
+
+                touchStartX =
+                    e.changedTouches[0].screenX;
+
+            },
+            {
+                passive: true
+            }
+        );
+
+
+        sliderEl.addEventListener(
+            'touchend',
+            (e) => {
+
+                touchEndX =
+                    e.changedTouches[0].screenX;
+
+
+                if (
+                    touchStartX - touchEndX > 40
+                ) {
+
+                    nextSlide();
+
+                }
+
+
+                if (
+                    touchEndX - touchStartX > 40
+                ) {
+
+                    prevSlide();
+
+                }
+
+            },
+            {
+                passive: true
+            }
+        );
+
+    }
+
+
+    /* =========================================================
+       BILLING TOGGLE
+    ========================================================= */
+
+    function setBilling(type) {
+
+        const btnMonthly =
+            document.getElementById('btnMonthly');
+
+        const btnYearly =
+            document.getElementById('btnYearly');
+
+        const cardMonthly =
+            document.getElementById('cardMonthly');
+
+        const cardYearly =
+            document.getElementById('cardYearly');
+
+
+        if (type === 'monthly') {
+
+            btnMonthly.classList.add('active');
+
+            btnYearly.classList.remove('active');
+
+            cardMonthly.classList.add('featured');
+
+            cardYearly.classList.remove('featured');
+
+        }
+
+        else {
+
+            btnYearly.classList.add('active');
+
+            btnMonthly.classList.remove('active');
+
+            cardYearly.classList.add('featured');
+
+            cardMonthly.classList.remove('featured');
+
+        }
+
+    }
+
+
+    /* =========================================================
+       FAQ TOGGLE
+    ========================================================= */
+
+    function toggleFAQ(button) {
+
+        const faqItem =
+            button.closest('.faq-item');
+
+        const allFAQItems =
+            document.querySelectorAll('.faq-item');
+
+
+        allFAQItems.forEach(item => {
+
+            if (item !== faqItem) {
+
+                item.classList.remove('open');
+
+            }
+
+        });
+
+
+        faqItem.classList.toggle('open');
+
+    }
+
+
+    /* =========================================================
+       INITIALIZE
+    ========================================================= */
+
+    updateSlider();
+
+</script>
+
+
+</body>
+</html>
