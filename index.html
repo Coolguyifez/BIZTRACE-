@@ -1129,6 +1129,397 @@
 
 
         /* =========================================================
+           ABOUT US
+        ========================================================= */
+
+        .about-section {
+            position: relative;
+
+            padding: 100px 20px;
+
+            overflow: hidden;
+
+            background:
+                radial-gradient(
+                    circle at 10% 20%,
+                    rgba(10,132,255,0.09),
+                    transparent 30%
+                ),
+                radial-gradient(
+                    circle at 90% 80%,
+                    rgba(16,185,129,0.07),
+                    transparent 30%
+                ),
+                var(--page-bg);
+
+            border-top: 1px solid var(--border-color);
+        }
+
+        .about-container {
+            max-width: 1150px;
+
+            margin: 0 auto;
+        }
+
+        .about-grid {
+            display: grid;
+
+            grid-template-columns:
+                minmax(0, 1.05fr)
+                minmax(350px, 0.95fr);
+
+            gap: 60px;
+
+            align-items: center;
+        }
+
+        .about-content {
+            max-width: 650px;
+        }
+
+        .about-badge {
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 8px;
+
+            padding: 7px 15px;
+
+            border-radius: 999px;
+
+            background: var(--primary-soft);
+
+            color: var(--primary);
+
+            font-size: 0.76rem;
+
+            font-weight: 700;
+
+            text-transform: uppercase;
+
+            letter-spacing: 0.05em;
+
+            margin-bottom: 18px;
+        }
+
+        .about-title {
+            margin: 0 0 18px;
+
+            font-size:
+                clamp(2rem, 4vw, 3.4rem);
+
+            line-height: 1.08;
+
+            font-weight: 800;
+
+            letter-spacing: -0.04em;
+
+            color: var(--text-primary);
+        }
+
+        .about-title .accent {
+            color: var(--primary);
+
+            background:
+                linear-gradient(
+                    135deg,
+                    var(--primary),
+                    #38ef7d
+                );
+
+            -webkit-background-clip: text;
+
+            -webkit-text-fill-color: transparent;
+        }
+
+        .about-description {
+            color: var(--text-secondary);
+
+            font-size: 1rem;
+
+            line-height: 1.75;
+
+            margin-bottom: 18px;
+        }
+
+        .about-description strong {
+            color: var(--text-primary);
+        }
+
+        .about-values {
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap: 14px;
+
+            margin-top: 28px;
+        }
+
+        .about-value {
+            padding: 18px;
+
+            border-radius: 18px;
+
+            background: var(--glass-card);
+
+            border: 1px solid var(--glass-border);
+
+            box-shadow: var(--card-shadow);
+
+            transition:
+                transform 0.3s var(--transition),
+                border-color 0.3s ease;
+        }
+
+        .about-value:hover {
+            transform: translateY(-4px);
+
+            border-color: var(--primary);
+        }
+
+        .about-value-icon {
+            width: 42px;
+            height: 42px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            border-radius: 12px;
+
+            background: var(--primary-soft);
+
+            color: var(--primary);
+
+            font-size: 1.15rem;
+
+            margin-bottom: 12px;
+        }
+
+        .about-value h4 {
+            font-size: 0.95rem;
+
+            font-weight: 700;
+
+            margin-bottom: 6px;
+
+            color: var(--text-primary);
+        }
+
+        .about-value p {
+            margin: 0;
+
+            color: var(--text-secondary);
+
+            font-size: 0.78rem;
+
+            line-height: 1.55;
+        }
+
+        .about-visual {
+            position: relative;
+
+            min-height: 480px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+        }
+
+        .about-glow {
+            position: absolute;
+
+            width: 360px;
+            height: 360px;
+
+            border-radius: 50%;
+
+            background:
+                radial-gradient(
+                    circle,
+                    var(--primary-glow),
+                    transparent 68%
+                );
+
+            filter: blur(25px);
+        }
+
+        .about-card {
+            position: relative;
+
+            z-index: 2;
+
+            width: min(430px, 100%);
+
+            padding: 32px;
+
+            border-radius: 30px;
+
+            background: var(--glass-bg);
+
+            border: 1px solid var(--glass-border);
+
+            backdrop-filter: blur(22px);
+
+            -webkit-backdrop-filter: blur(22px);
+
+            box-shadow: var(--shadow);
+        }
+
+        .about-company-icon {
+            width: 70px;
+            height: 70px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            border-radius: 21px;
+
+            background: var(--text-secondary);
+
+            color: white;
+
+            font-size: 2rem;
+
+            margin-bottom: 22px;
+
+            box-shadow:
+                0 14px 30px var(--primary-glow);
+        }
+
+        .about-company-name {
+            font-size: 1.5rem;
+
+            font-weight: 800;
+
+            letter-spacing: -0.025em;
+
+            margin-bottom: 8px;
+
+            color: var(--text-primary);
+        }
+
+        .about-company-subtitle {
+            color: var(--primary);
+
+            font-size: 0.8rem;
+
+            font-weight: 700;
+
+            text-transform: uppercase;
+
+            letter-spacing: 0.06em;
+
+            margin-bottom: 18px;
+        }
+
+        .about-company-text {
+            color: var(--text-secondary);
+
+            font-size: 0.88rem;
+
+            line-height: 1.7;
+
+            margin-bottom: 24px;
+        }
+
+        .about-service-list {
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 10px;
+
+            margin: 0;
+
+            padding: 0;
+
+            list-style: none;
+        }
+
+        .about-service-list li {
+            display: flex;
+
+            align-items: center;
+
+            gap: 10px;
+
+            color: var(--text-primary);
+
+            font-size: 0.82rem;
+
+            font-weight: 600;
+        }
+
+        .about-service-list i {
+            color: var(--success);
+
+            font-size: 1rem;
+        }
+
+        .about-floating-badge {
+            position: absolute;
+
+            z-index: 4;
+
+            padding: 11px 16px;
+
+            border-radius: 15px;
+
+            background: var(--glass-card);
+
+            border: 1px solid var(--glass-border);
+
+            backdrop-filter: blur(16px);
+
+            -webkit-backdrop-filter: blur(16px);
+
+            box-shadow:
+                0 14px 35px rgba(0,0,0,0.12);
+
+            color: var(--text-primary);
+
+            font-size: 0.76rem;
+
+            font-weight: 700;
+        }
+
+        .about-floating-badge i {
+            color: var(--primary);
+
+            margin-right: 6px;
+        }
+
+        .about-badge-one {
+            top: 35px;
+
+            right: -10px;
+
+            animation:
+                badgeFloat 4s ease-in-out infinite;
+        }
+
+        .about-badge-two {
+            bottom: 40px;
+
+            left: -10px;
+
+            animation:
+                badgeFloat 4s ease-in-out 2s infinite;
+        }
+
+
+        /* =========================================================
            SUBSCRIPTION SECTION
         ========================================================= */
 
@@ -2048,6 +2439,36 @@
             .support-option {
                 padding: 24px 20px;
             }
+
+            .about-section {
+                padding: 75px 20px;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+
+                gap: 45px;
+
+                text-align: center;
+            }
+
+            .about-content {
+                max-width: 750px;
+
+                margin: 0 auto;
+            }
+
+            .about-values {
+                text-align: left;
+            }
+
+            .about-visual {
+                min-height: 400px;
+            }
+
+            .about-floating-badge {
+                display: none;
+            }
         }
 
 
@@ -2155,6 +2576,24 @@
                 width: 46px;
                 height: 46px;
             }
+
+            .about-section {
+                padding: 65px 15px;
+            }
+
+            .about-values {
+                grid-template-columns: 1fr;
+            }
+
+            .about-card {
+                padding: 25px 20px;
+
+                border-radius: 24px;
+            }
+
+            .about-visual {
+                min-height: 350px;
+            }
         }
 
     </style>
@@ -2195,6 +2634,14 @@
         <li>
             <a href="#download" class="nav-link-custom">
                 Apps
+            </a>
+        </li>
+
+        <!-- ABOUT US ADDED -->
+
+        <li>
+            <a href="#about" class="nav-link-custom">
+                About Us
             </a>
         </li>
 
@@ -3246,6 +3693,321 @@
 
 
 <!-- =========================================================
+     ABOUT US
+========================================================= -->
+
+<section
+    class="about-section"
+    id="about"
+>
+
+    <div class="about-container">
+
+        <div class="about-grid">
+
+
+            <!-- =================================================
+                 ABOUT CONTENT
+            ================================================== -->
+
+            <div class="about-content">
+
+                <div class="about-badge">
+
+                    <i class="bi bi-building"></i>
+
+                    About Us
+
+                </div>
+
+
+                <h2 class="about-title">
+
+                    Technology built to
+                    <span class="accent">
+                        simplify business.
+                    </span>
+
+                </h2>
+
+
+                <p class="about-description">
+
+                    <strong>Efxion Tech Solution</strong> is a
+                    technology-focused business dedicated to
+                    creating practical digital solutions that help
+                    individuals, businesses and organizations work
+                    more efficiently.
+
+                </p>
+
+
+                <p class="about-description">
+
+                    Our approach combines software development,
+                    information technology and business process
+                    automation to create solutions that are
+                    accessible, useful and designed around real
+                    business needs.
+
+                </p>
+
+
+                <p class="about-description">
+
+                    <strong>BizTrace IMS</strong> is one of our
+                    solutions, created to give businesses a
+                    centralized platform for managing sales,
+                    purchases, inventory, customers, suppliers,
+                    expenses, payments, users, roles, permissions
+                    and business reports.
+
+                </p>
+
+
+                <div class="about-values">
+
+
+                    <!-- INNOVATION -->
+
+                    <div class="about-value">
+
+                        <div class="about-value-icon">
+
+                            <i class="bi bi-lightbulb-fill"></i>
+
+                        </div>
+
+
+                        <h4>
+                            Innovation
+                        </h4>
+
+
+                        <p>
+
+                            We use modern technology to develop
+                            practical solutions for everyday
+                            business challenges.
+
+                        </p>
+
+                    </div>
+
+
+
+                    <!-- SMART SOLUTIONS -->
+
+                    <div class="about-value">
+
+                        <div class="about-value-icon">
+
+                            <i class="bi bi-gear-wide-connected"></i>
+
+                        </div>
+
+
+                        <h4>
+                            Smart Solutions
+                        </h4>
+
+
+                        <p>
+
+                            We focus on systems that simplify
+                            processes and make business operations
+                            easier to manage.
+
+                        </p>
+
+                    </div>
+
+
+
+                    <!-- RELIABILITY -->
+
+                    <div class="about-value">
+
+                        <div class="about-value-icon">
+
+                            <i class="bi bi-shield-check"></i>
+
+                        </div>
+
+
+                        <h4>
+                            Reliability
+                        </h4>
+
+
+                        <p>
+
+                            Our goal is to build dependable digital
+                            tools that businesses can use as part
+                            of their daily operations.
+
+                        </p>
+
+                    </div>
+
+
+
+                    <!-- CUSTOMER FOCUS -->
+
+                    <div class="about-value">
+
+                        <div class="about-value-icon">
+
+                            <i class="bi bi-people-fill"></i>
+
+                        </div>
+
+
+                        <h4>
+                            Customer Focus
+                        </h4>
+
+
+                        <p>
+
+                            We design our solutions around the
+                            actual needs of the people and
+                            businesses using them.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 ABOUT VISUAL
+            ================================================== -->
+
+            <div class="about-visual">
+
+                <div class="about-glow"></div>
+
+
+                <div class="about-card">
+
+
+                    <div class="about-company-icon">
+
+                        <img src="images/my logo.png" width="50px">
+
+                    </div>
+
+
+                    <div class="about-company-subtitle">
+
+                        Technology & Digital Solutions
+
+                    </div>
+
+
+                    <div class="about-company-name">
+
+                        Efxion Tech Solution
+
+                    </div>
+
+
+                    <p class="about-company-text">
+
+                        Building digital solutions that connect
+                        technology with real-world business needs.
+                        From software systems to IT solutions, our
+                        focus is on helping businesses operate
+                        smarter, stay organized and make better
+                        decisions.
+
+                    </p>
+
+
+                    <ul class="about-service-list">
+
+                        <li>
+
+                            <i class="bi bi-check-circle-fill"></i>
+
+                            Software & Web Application Development
+
+                        </li>
+
+
+                        <li>
+
+                            <i class="bi bi-check-circle-fill"></i>
+
+                            Business Management Systems
+
+                        </li>
+
+
+                        <li>
+
+                            <i class="bi bi-check-circle-fill"></i>
+
+                            Information Technology Solutions
+
+                        </li>
+
+
+                        <li>
+
+                            <i class="bi bi-check-circle-fill"></i>
+
+                            Business Process Digitalization
+
+                        </li>
+
+
+                        <li>
+
+                            <i class="bi bi-check-circle-fill"></i>
+
+                            Technical Support & IT Services
+
+                        </li>
+
+                    </ul>
+
+                </div>
+
+
+                <div class="about-floating-badge about-badge-one">
+
+                    <i class="bi bi-code-slash"></i>
+
+                    Technology Driven
+
+                </div>
+
+
+                <div class="about-floating-badge about-badge-two">
+
+                    <i class="bi bi-bar-chart-fill"></i>
+
+                    Business Focused
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
      SUBSCRIPTION SECTION
 ========================================================= -->
 
@@ -3307,7 +4069,7 @@
                     id="btnYearly"
                     onclick="setBilling('yearly')"
                 >
-                    Yearly Billing
+                    Annual Billing
                 </button>
 
             </div>
@@ -3317,7 +4079,7 @@
 
                 <i class="bi bi-stars"></i>
 
-                Annual Saving: ₦48,000 (20%)
+                Annual Saving: ₦72,000 (20%)
 
             </span>
 
@@ -3374,7 +4136,7 @@
                             <div class="mb-3">
 
                                 <span class="price-amount">
-                                    ₦20,000
+                                    ₦30,000
                                 </span>
 
                                 <span class="price-period">
@@ -3448,7 +4210,7 @@
                                 <h3
                                     class="h4 fw-bold m-0 text-primary"
                                 >
-                                    Yearly Plan
+                                    Annual Plan
                                 </h3>
 
                                 <span
@@ -3474,7 +4236,7 @@
                             <div class="mb-2">
 
                                 <span class="price-amount">
-                                    ₦192,000
+                                    ₦288,000
                                 </span>
 
                                 <span class="price-period">
@@ -3492,7 +4254,7 @@
                                     class="bi bi-piggy-bank-fill me-1"
                                 ></i>
 
-                                Annual Saving: ₦48,000 (20%)
+                                Annual Saving: ₦72,000 (20%)
 
                             </div>
 
@@ -3503,11 +4265,11 @@
 
                                     <span>
                                         Standard Rate
-                                        (₦20,000 × 12)
+                                        (₦30,000 × 12)
                                     </span>
 
                                     <span>
-                                        ₦240,000
+                                        ₦360,000
                                     </span>
 
                                 </div>
@@ -3516,11 +4278,11 @@
                                 <div class="breakdown-item">
 
                                     <span>
-                                        Yearly Subscription
+                                        Annual Subscription
                                     </span>
 
                                     <strong>
-                                        ₦192,000
+                                        ₦288,000
                                     </strong>
 
                                 </div>
@@ -3533,7 +4295,7 @@
                                     </span>
 
                                     <span>
-                                        ₦48,000 (20%)
+                                        ₦72,000 (20%)
                                     </span>
 
                                 </div>
@@ -3932,8 +4694,6 @@
 
                 </div>
 
-
-
                 <!-- FAQ 5 -->
 
                 <div class="faq-item">
@@ -3945,7 +4705,7 @@
                     >
 
                         <span>
-                            Can I use BizTrace IMS on different devices?
+                            How does one subscribe to BizTrace IMS when subscription is dew?
                         </span>
 
                         <i class="bi bi-chevron-down"></i>
@@ -3955,10 +4715,87 @@
 
                     <div class="faq-answer">
 
-                        BizTrace IMS is designed as a web-based
-                        business management platform that can be
-                        accessed from supported devices through
-                        a modern web browser.
+                        When your BizTrace IMS subscription is due, 
+                        renew by paying ₦30,000 monthly or ₦288,000 
+                        Annually to First Bank, Account Number: 3099295142,
+                         Account Name: Ikukaiwe Emmanuel, then send your payment
+                         receipt and company name to the administrator for 
+                         confirmation and activation.
+
+                    </div>
+
+                </div>
+
+                <!-- FAQ 6 -->
+
+                <div class="faq-item">
+
+                    <button
+                        class="faq-button"
+                        onclick="toggleFAQ(this)"
+                        type="button"
+                    >
+
+                        <span>
+                           What happens when i miss more than a month or two of subscribing?
+                        </span>
+
+                        <i class="bi bi-chevron-down"></i>
+
+                    </button>
+
+
+                    <div class="faq-answer">
+
+                        If your BizTrace IMS subscription expires and remains unpaid for one month, 
+                        a daily maintenance fee will begin to accrue and will be communicated to your company. 
+                        If the subscription remains unpaid for two months, your company account, 
+                        records, and system logs may be permanently taken down and removed from the system. 
+                        To avoid additional charges or loss of access and records, ensure your subscription 
+                        is renewed before the expiry date.
+
+                    </div>
+
+                </div>
+
+
+
+
+                <!-- FAQ 7 -->
+
+                <div class="faq-item">
+
+                    <button
+                        class="faq-button"
+                        onclick="toggleFAQ(this)"
+                        type="button"
+                    >
+
+                        <span>
+                            Can I install and use BizTrace IMS on different devices?
+                        </span>
+
+                        <i class="bi bi-chevron-down"></i>
+
+                    </button>
+
+
+                    <div class="faq-answer">
+
+                        For now, BizTrace IMS is designed as a web-based business management platform that can be accessed from supported laptops, tablets, Android devices, and iPhones/iPads through a modern web browser and can be installed as an app on supported devices for faster access and a more app-like experience. <br>
+
+                        <br><b>How to Install BizTrace IMS on Your Device</b><br>
+
+                        <br><b>Laptop / Desktop (Windows or Mac):</b>
+                        Open BizTrace IMS in Chrome or Microsoft Edge, sign in if necessary, then look for the <b>Install</b> icon in the browser's address bar or open the browser menu and select <b>Install BizTrace IMS</b> or <b>Install app</b>; follow the prompt to complete the installation, after which BizTrace IMS can be launched like a normal application.
+
+                        <br><b>Android Phone / Tablet:</b>  
+                        Open BizTrace IMS using Google Chrome, tap the <b>three-dot menu (⋮)</b>, select <b>Install app</b> or <b>Add to Home screen</b>, and confirm the installation; the BizTrace IMS icon will then appear on your device and can be opened directly like an app.
+
+                        <br><b>iPhone / iPad:</b> 
+                        Open BizTrace IMS using <b>Safari</b>, tap the <b>Share</b> button, select <b>Add to Home Screen</b>, confirm by tapping <b>Add</b>, and BizTrace IMS will appear on your Home Screen and can be launched directly like an app.<br>
+
+                        <br><b>Important:</b> The exact installation option may vary depending on the device, browser version, and operating system; if an <b>Install app</b> option is available, use it, otherwise use <b>Add to Home Screen</b>.
 
                     </div>
 
@@ -4028,6 +4865,18 @@
         <div class="mb-2">
 
             <a
+                href="#about"
+                class="text-primary text-decoration-none fw-semibold me-3"
+            >
+
+                <i class="bi bi-building me-1"></i>
+
+                About Efxion Tech Solution
+
+            </a>
+
+
+            <a
                 href="#support"
                 class="text-primary text-decoration-none fw-semibold"
             >
@@ -4039,6 +4888,14 @@
             </a>
 
         </div>
+
+
+        <p class="small text-secondary mb-1">
+
+            BizTrace IMS is a business management solution
+            developed by Efxion Tech Solution.
+
+        </p>
 
 
         <p class="small text-secondary mb-0">
